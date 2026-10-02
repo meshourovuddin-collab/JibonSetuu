@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JibonSetu"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smart Emergency Rescue System"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who are you?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="25dp" />
+
+    <Button
+        android:id="@+id/btnHelpSeeker"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="I NEED HELP"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnRescueTeam"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="RESCUE TEAM"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="ADMIN"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

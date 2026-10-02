@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "335775150195",
+    "project_id": "jibonsetu-c16cd",
+    "storage_bucket": "jibonsetu-c16cd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335775150195:android:d9e741d12db34b5c8d7a06",
+        "android_client_info": {
+          "package_name": "com.jibonsetu.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU3LQG-8zPY_Eu4w6DezX8K-DqHMhIMck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
