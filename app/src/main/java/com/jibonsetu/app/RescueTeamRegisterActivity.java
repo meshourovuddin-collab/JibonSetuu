@@ -1,9 +1,11 @@
+
 package com.jibonsetu.app;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -18,12 +21,8 @@ import java.util.Map;
 
 public class RescueTeamRegisterActivity extends Activity {
 
-    private EditText etTeamName;
-    private EditText etLeaderName;
-    private EditText etPhone;
-    private EditText etEmail;
-    private EditText etPassword;
-    private EditText etLocation;
+    private EditText etTeamName, etLeaderName, etPhone;
+    private EditText etEmail, etPassword, etLocation;
 
     private Button btnRegister;
     private TextView tvLogin;
@@ -36,7 +35,6 @@ public class RescueTeamRegisterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_rescue_team_register);
 
         etTeamName = findViewById(R.id.etTeamName);
@@ -55,11 +53,10 @@ public class RescueTeamRegisterActivity extends Activity {
         btnRegister.setOnClickListener(v -> registerTeam());
 
         tvLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(
+            startActivity(new Intent(
                     RescueTeamRegisterActivity.this,
                     RescueTeamLoginActivity.class
-            );
-            startActivity(intent);
+            ));
         });
     }
 
@@ -68,8 +65,9 @@ public class RescueTeamRegisterActivity extends Activity {
         String teamName = etTeamName.getText().toString().trim();
         String leaderName = etLeaderName.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
-        String email = etEmail.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        String email = etEmail.getText().toString()
+                .trim().toLowerCase();
+        String password = etPassword.getText().toString();
         String location = etLocation.getText().toString().trim();
 
         if (teamName.isEmpty()) {
@@ -91,30 +89,25 @@ public class RescueTeamRegisterActivity extends Activity {
         }
 
         if (email.isEmpty()) {
-            etEmail.setError("Enter email address");
+            etEmail.setError("Email address is required");
             etEmail.requestFocus();
             return;
         }
 
-        if (!android.util.Patterns.EMAIL_ADDRESS
-                .matcher(email)
-                .matches()) {
-
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmail.setError("Enter a valid email address");
             etEmail.requestFocus();
             return;
         }
 
-        if (password.isEmpty()) {
+        if (password.trim().isEmpty()) {
             etPassword.setError("Enter password");
             etPassword.requestFocus();
             return;
         }
 
         if (password.length() < 6) {
-            etPassword.setError(
-                    "Password must be at least 6 characters"
-            );
+            etPassword.setError("Password must be at least 6 characters");
             etPassword.requestFocus();
             return;
         }
@@ -126,124 +119,130 @@ public class RescueTeamRegisterActivity extends Activity {
         }
 
         btnRegister.setEnabled(false);
+        btnRegister.setText("Creating Account...");
 
-        firebaseAuth
-                .createUserWithEmailAndPassword(email, password)
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
 
-                    if (task.isSuccessful()) {
+                    if (!task.isSuccessful()) {
+                        String message = task.getException() != null
+                                ? task.getException().getLocalizedMessage()
+                                : "Registration failed";
 
-                        saveTeamProfile(
-                                teamName,
-                                leaderName,
-                                phone,
-                                email,
-                                location
-                        );
+                        Log.e(TAG, "Registration error", task.getException());
+                        resetButton();
 
-                    } else {
-
-                        btnRegister.setEnabled(true);
-
-                        String message = "Registration failed";
-
-                        if (task.getException()
-                                instanceof FirebaseAuthException) {
-
-                            FirebaseAuthException exception =
-                                    (FirebaseAuthException)
-                                            task.getException();
-
-                            message = exception.getMessage();
-
-                        } else if (task.getException() != null) {
-
-                            message =
-                                    task.getException().getMessage();
-                        }
-
-                        Log.e(TAG, message, task.getException());
-
-                        Toast.makeText(
-                                RescueTeamRegisterActivity.this,
-                                message,
-                                Toast.LENGTH_LONG
-                        ).show();
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                        return;
                     }
+
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                    if (user == null) {
+                        resetButton();
+                        Toast.makeText(this,
+                                "Account creation failed",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    saveTeamProfile(
+                            user,
+                            teamName,
+                            leaderName,
+                            phone,
+                            email,
+                            location
+                    );
                 });
     }
 
     private void saveTeamProfile(
+            FirebaseUser user,
             String teamName,
             String leaderName,
             String phone,
             String email,
             String location) {
 
-        if (firebaseAuth.getCurrentUser() == null) {
+        String uid = user.getUid();
 
-            btnRegister.setEnabled(true);
-
-            Toast.makeText(
-                    this,
-                    "Authentication failed",
-                    Toast.LENGTH_LONG
-            ).show();
-
-            return;
-        }
-
-        String userId =
-                firebaseAuth.getCurrentUser().getUid();
-
-        Map<String, Object> team =
-                new HashMap<>();
-
+        Map<String, Object> team = new HashMap<>();
+        team.put("uid", uid);
         team.put("teamName", teamName);
         team.put("leaderName", leaderName);
+        team.put("name", teamName);
         team.put("phone", phone);
         team.put("email", email);
         team.put("location", location);
         team.put("role", "RESCUE_TEAM");
-        team.put("accountStatus", "ACTIVE");
 
-        firestore
-                .collection("users")
-                .document(userId)
+        // Pending verification/approval is safer than automatic activation.
+        team.put("accountStatus", "PENDING_VERIFICATION");
+
+        firestore.collection("users")
+                .document(uid)
                 .set(team)
                 .addOnSuccessListener(unused -> {
 
-                    Toast.makeText(
-                            RescueTeamRegisterActivity.this,
-                            "Rescue Team registered successfully!",
-                            Toast.LENGTH_LONG
-                    ).show();
+                    user.sendEmailVerification()
+                            .addOnCompleteListener(emailTask -> {
 
-                    Intent intent = new Intent(
-                            RescueTeamRegisterActivity.this,
-                            RescueTeamLoginActivity.class
-                    );
+                                if (emailTask.isSuccessful()) {
 
-                    startActivity(intent);
+                                    firebaseAuth.signOut();
 
-                    finish();
+                                    Toast.makeText(
+                                            this,
+                                            "Verification link sent to "
+                                                    + email
+                                                    + ". Verify your email before login.",
+                                            Toast.LENGTH_LONG
+                                    ).show();
+
+                                    Intent intent = new Intent(
+                                            RescueTeamRegisterActivity.this,
+                                            RescueTeamLoginActivity.class
+                                    );
+
+                                    intent.setFlags(
+                                            Intent.FLAG_ACTIVITY_NEW_TASK
+                                                    | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    );
+
+                                    startActivity(intent);
+                                    finish();
+
+                                } else {
+                                    resetButton();
+
+                                    Log.e(TAG,
+                                            "Verification email failed",
+                                            emailTask.getException());
+
+                                    Toast.makeText(
+                                            this,
+                                            "Profile saved, but verification email could not be sent. Please try again.",
+                                            Toast.LENGTH_LONG
+                                    ).show();
+                                }
+                            });
                 })
                 .addOnFailureListener(e -> {
+                    resetButton();
 
-                    btnRegister.setEnabled(true);
-
-                    Log.e(
-                            TAG,
-                            "Firestore error",
-                            e
-                    );
+                    Log.e(TAG, "Firestore error", e);
 
                     Toast.makeText(
-                            RescueTeamRegisterActivity.this,
-                            "Profile save failed:\n"
-                                    + e.getMessage(),
+                            this,
+                            "Profile save failed: " + e.getLocalizedMessage(),
                             Toast.LENGTH_LONG
                     ).show();
                 });
+    }
+
+    private void resetButton() {
+        btnRegister.setEnabled(true);
+        btnRegister.setText("Register");
     }
 }

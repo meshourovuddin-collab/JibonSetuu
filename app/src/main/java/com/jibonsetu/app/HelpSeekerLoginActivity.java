@@ -8,11 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HelpSeekerLoginActivity extends Activity {
 
-    EditText etPhone, etPassword;
+    EditText etEmail, etPassword;
     Button btnLogin;
     TextView tvRegister;
+
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,31 +24,74 @@ public class HelpSeekerLoginActivity extends Activity {
 
         setContentView(R.layout.activity_help_seeker_login);
 
-        etPhone = findViewById(R.id.etPhone);
+        etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         btnLogin.setOnClickListener(v -> {
 
-            String phone = etPhone.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            if (phone.isEmpty()) {
-                etPhone.setError("Enter phone number");
+            if (email.isEmpty()) {
+                etEmail.setError("Enter email address");
+                etEmail.requestFocus();
+                return;
+            }
+
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                etEmail.setError("Enter a valid email address");
+                etEmail.requestFocus();
                 return;
             }
 
             if (password.isEmpty()) {
                 etPassword.setError("Enter password");
+                etPassword.requestFocus();
                 return;
             }
 
-            Toast.makeText(
-                    HelpSeekerLoginActivity.this,
-                    "Login system will be connected to Firebase later",
-                    Toast.LENGTH_LONG
-            ).show();
+            btnLogin.setEnabled(false);
+
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+
+                        btnLogin.setEnabled(true);
+
+                        if (task.isSuccessful()) {
+
+                            Toast.makeText(
+                                    HelpSeekerLoginActivity.this,
+                                    "Login Successful!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+
+                            Intent intent = new Intent(
+                                    HelpSeekerLoginActivity.this,
+                                    HelpSeekerHomeActivity.class
+                            );
+
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+
+                            String errorMessage = "Login failed";
+
+                            if (task.getException() != null) {
+                                errorMessage = task.getException().getMessage();
+                            }
+
+                            Toast.makeText(
+                                    HelpSeekerLoginActivity.this,
+                                    errorMessage,
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
+                    });
         });
 
         tvRegister.setOnClickListener(v -> {

@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">JibonSetu</string>
+
+    <string name="invalid_request_id">Invalid request ID</string>
+    <string name="map_load_error">Map could not be loaded.</string>
+    <string name="location_load_error">Unable to load location. Check connection and Firestore permissions.</string>
+    <string name="request_not_found">Request not found.</string>
+    <string name="waiting_gps">Waiting for GPS location...</string>
+    <string name="rescue_completed">Rescue completed.</string>
+    <string name="help_seeker">Help Seeker</string>
+    <string name="live_location_status">Live location • %1$s</string>
+    <string name="live_location_updated">Live location • %1$s\nLast update: %2$s</string>
 </resources>

@@ -1,60 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp">
+    android:background="#F1F7FC"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JibonSetu"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HELP SEEKER"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="35dp" />
-
-
-    <EditText
-        android:id="@+id/etPhone"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:padding="12dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:layout_marginTop="15dp" />
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/jibonsetu_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="JibonSetu Logo" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="LOGIN"
-        android:textSize="17sp"
-        android:layout_marginTop="25dp" />
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JibonSetu"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#123B70"
+            android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account? REGISTER"
-        android:textSize="16sp"
-        android:layout_marginTop="25dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Together for a Safer Tomorrow"
+            android:textSize="14sp"
+            android:textColor="#647991"
+            android:layout_marginTop="4dp" />
 
-</LinearLayout>
+        <!-- Login Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_register_card"
+            android:elevation="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HELP SEEKER"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#123B70"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login to request emergency help"
+                android:textSize="14sp"
+                android:textColor="#647991"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="28dp" />
+
+            <!-- Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Address"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#183B64" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter your email"
+                android:padding="14dp"
+                android:textSize="15sp"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+
+            <!-- Password -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#183B64"
+                android:layout_marginTop="18dp" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter your password"
+                android:padding="14dp"
+                android:textSize="15sp"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="26dp"
+                android:backgroundTint="#078C87"
+                android:text="LOGIN"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <!-- Register Link -->
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? REGISTER"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#078C87"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginTop="18dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your safety matters to us."
+            android:textSize="13sp"
+            android:textColor="#71869D"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

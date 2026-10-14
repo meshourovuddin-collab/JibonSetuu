@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,31 +12,82 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JibonSetu">
 
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
 
+        </activity>
+        <!-- SPLASH SCREEN -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
 
         </activity>
 
+        <!-- Help Seeker Login -->
         <activity
             android:name=".HelpSeekerLoginActivity"
             android:exported="false" />
 
+        <!-- Help Seeker Register -->
+        <activity
+            android:name=".HelpSeekerRegisterActivity"
+            android:exported="false" />
+
+        <!-- Rescue Team Login -->
         <activity
             android:name=".RescueTeamLoginActivity"
             android:exported="false" />
 
+        <!-- Rescue Team Register -->
+        <activity
+            android:name=".RescueTeamRegisterActivity"
+            android:exported="false" />
+
+        <!-- Admin Login -->
         <activity
             android:name=".AdminLoginActivity"
             android:exported="false" />
+        <!--Home Activity -->
+        <activity
+            android:name=".HelpSeekerHomeActivity"
+            android:exported="false" />
+        <!--Home Activity -->
+        <activity
+            android:name=".RescueTeamHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RescueLiveMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminManageUsersActivity"
+            android:exported="false" />
 
         <activity
-            android:name=".HelpSeekerRegisterActivity"
+            android:name=".AdminManageTeamsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AdminManageRequestsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AdminManageCentersActivity"
+            android:exported="false" />
+        <service
+            android:name=".LocationTrackingService"
             android:exported="false" />
 
     </application>

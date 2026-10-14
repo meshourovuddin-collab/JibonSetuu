@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F8FC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#073B65">
+
+            <ImageView
+                android:id="@+id/imgAdminLogo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/jibonsetu_logo"
+                android:scaleType="fitCenter"
+                android:contentDescription="JibonSetu Logo" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JibonSetu"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FLOOD RESCUE MANAGEMENT"
+                    android:textColor="#BDE7FF"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.05" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Welcome -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome, Admin 👋"
+            android:textColor="#12314A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monitor rescue operations and help save lives."
+            android:textColor="#64748B"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="18dp" />
+
+        <!-- Statistics Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SYSTEM OVERVIEW"
+                android:textColor="#075985"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvAdminSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loading dashboard data..."
+                android:textColor="#334155"
+                android:textSize="16sp"
+                android:lineSpacingExtra="8dp"
+                android:layout_marginTop="14dp" />
+
+        </LinearLayout>
+
+        <!-- Section Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Management Center"
+            android:textColor="#12314A"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Manage Users -->
+        <Button
+            android:id="@+id/btnManageUsers"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="👥   Manage Users"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1769AA" />
+
+        <!-- Rescue Teams -->
+        <Button
+            android:id="@+id/btnManageTeams"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:text="🛟   Manage Rescue Teams"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#13805C" />
+
+        <!-- SOS Requests -->
+        <Button
+            android:id="@+id/btnManageRequests"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:text="🚨   Manage SOS Requests"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D94B43" />
+
+        <!-- Relief Centers -->
+        <Button
+            android:id="@+id/btnManageCenters"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:text="🏠   Manage Relief Centers"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#7355B5" />
+
+        <!-- Logout -->
+        <Button
+            android:id="@+id/btnAdminLogout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="12dp"
+            android:text="LOG OUT"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#B42318"
+            android:backgroundTint="#FDE8E7" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JibonSetu • Connecting Help, Saving Lives"
+            android:gravity="center"
+            android:textColor="#8494A7"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+
+</ScrollView>

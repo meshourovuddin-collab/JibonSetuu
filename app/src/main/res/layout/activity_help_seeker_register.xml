@@ -1,83 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3F7FB"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:padding="24dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="JibonSetu Logo"
+            android:src="@drawable/jibonsetu_logo"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="JibonSetu"
-            android:textSize="32sp"
+            android:textColor="#073B65"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HELP SEEKER REGISTER"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="30dp" />
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Full Name"
-            android:inputType="textPersonName"
-            android:padding="12dp" />
-
-        <EditText
-            android:id="@+id/etPhone"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:layout_marginTop="15dp" />
-
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:layout_marginTop="15dp" />
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:layout_marginTop="15dp" />
-
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="REGISTER"
-            android:textSize="17sp"
-            android:layout_marginTop="25dp" />
+            android:layout_marginTop="6dp"
+            android:text="HELP SEEKER REGISTRATION"
+            android:textColor="#168A78"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Already have an account? LOGIN"
-            android:textSize="16sp"
-            android:layout_marginTop="25dp" />
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Create an account to request flood emergency assistance."
+            android:textColor="#607080"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textColor="#073B65"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#168A78"
+                android:hint="Enter your full name"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172B3A"
+                android:textColorHint="#8996A3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Phone Number"
+                android:textColor="#073B65"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#168A78"
+                android:hint="Enter your phone number"
+                android:inputType="phone"
+                android:maxLength="15"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172B3A"
+                android:textColorHint="#8996A3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Email Address"
+                android:textColor="#073B65"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#168A78"
+                android:hint="example@gmail.com"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172B3A"
+                android:textColorHint="#8996A3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Password"
+                android:textColor="#073B65"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#168A78"
+                android:hint="Minimum 6 characters"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172B3A"
+                android:textColorHint="#8996A3" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="A verification link will be sent to your email address."
+                android:textColor="#607080"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="22dp"
+                android:backgroundTint="#087F6E"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account? "
+                    android:textColor="#607080"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Login"
+                    android:textColor="#087F6E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="JibonSetu • Flood Emergency Rescue and Relief"
+            android:textColor="#8996A3"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

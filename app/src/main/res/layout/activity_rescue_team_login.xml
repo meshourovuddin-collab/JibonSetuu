@@ -1,10 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RescueTeamLoginActivity">
+    android:background="#F1F7FC"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/jibonsetu_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="JibonSetu Logo" />
+
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JibonSetu"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#123B70"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Together for a Safer Tomorrow"
+            android:textSize="14sp"
+            android:textColor="#647991"
+            android:layout_marginTop="4dp" />
+
+        <!-- Login Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_register_card"
+            android:elevation="5dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RESCUE TEAM LOGIN"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#123B70"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign in to help people in emergencies"
+                android:textSize="14sp"
+                android:textColor="#647991"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="28dp" />
+
+            <!-- Email Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Address"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#183B64" />
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter your team email"
+                android:inputType="textEmailAddress"
+                android:padding="14dp"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB" />
+
+            <!-- Password Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#183B64"
+                android:layout_marginTop="18dp" />
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:padding="14dp"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB" />
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="26dp"
+                android:backgroundTint="#078C87"
+                android:text="LOGIN"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <!-- Register Link -->
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? REGISTER"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#078C87"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginTop="18dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Every rescue begins with a helping hand."
+            android:textSize="13sp"
+            android:textColor="#71869D"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

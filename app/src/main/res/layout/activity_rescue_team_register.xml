@@ -1,6 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F1F7FC"
+    android:fillViewport="true"
+    android:clipToPadding="false">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/jibonsetu_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="JibonSetu Logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JibonSetu"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#123B70"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Together for a Safer Tomorrow"
+            android:textSize="14sp"
+            android:textColor="#52718F"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Registration Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:background="@drawable/bg_register_card"
+            android:elevation="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rescue Team Registration"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:textColor="#123B70"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register your team and join our flood rescue mission."
+                android:textSize="14sp"
+                android:textColor="#647991"
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Team Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Team Name"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etTeamName"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter rescue team name"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Leader Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Team Leader Name"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etLeaderName"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter leader name"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Phone -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter phone number"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Address"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="example@gmail.com"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Password -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Minimum 6 characters"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Location -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Team Location"
+                android:textColor="#183B64"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etLocation"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="24dp"
+                android:paddingHorizontal="14dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Enter district or area"
+                android:textColor="#183B64"
+                android:textColorHint="#8295AB"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:backgroundTint="#078C87"
+                android:text="Register Rescue Team"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:elevation="3dp" />
+
+            <!-- Login Link -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account? "
+                    android:textSize="14sp"
+                    android:textColor="#647991" />
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#078C87"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JibonSetu • Flood Emergency Rescue and Relief"
+            android:textSize="12sp"
+            android:textColor="#71869D"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>
